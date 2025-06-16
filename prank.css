@@ -1,100 +1,111 @@
-body {
-  margin: 0;
-  padding: 0;
-  background-color: black;
-  overflow: hidden;
-  font-family: monospace;
-  color: red;
-}
-
-.fullscreen-bg {
-  background-image: repeating-linear-gradient(45deg, black, red 5px);
-  opacity: 0.05;
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-.fake-popup {
-  display: none;
-  position: absolute;
-  background: #111;
-  border: 2px solid red;
-  color: white;
-  padding: 20px;
-  width: 250px;
-  box-shadow: 0 0 20px red;
-  z-index: 999;
-  animation: blink 1s infinite;
-}
-
-.fake-popup h3 {
-  margin: 0 0 10px;
-  color: #ff4444;
-  font-size: 16px;
-}
-
-.fake-popup p {
-  font-size: 14px;
-}
-
-.fake-popup button {
-  margin-top: 10px;
-  background: red;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-
-/* Background Video */
+/* ========================
+   VIDEO BACKGROUND STYLING
+   ======================== */
 #bg-video {
   position: fixed;
-  top: 0;
-  left: 0;
-  min-width: 100vw;
-  min-height: 100vh;
+  top: 50%;
+  left: 50%;
+  height: 100vh;
+  width: auto;
+  transform: translate(-50%, -50%);
   object-fit: cover;
   z-index: -2;
-  opacity: 0.2;
+  filter: brightness(0.3) contrast(1.2);
 }
 
-/* Popup Style */
+/* ========================
+   PERINGATAN UTAMA
+   ======================== */
+.peringatan {
+  position: fixed;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ff0000;
+  color: #fff;
+  font-family: monospace;
+  font-size: 1.6rem;
+  padding: 20px 30px;
+  border-radius: 10px;
+  border: 2px solid white;
+  box-shadow: 0 0 25px #ff0000, 0 0 50px #ff0000;
+  text-align: center;
+  z-index: 9999;
+  animation: warningBlink 1s infinite alternate;
+}
+
+/* ========================
+   POPUP STYLE
+   ======================== */
 .popup {
   position: absolute;
-  background: black;
-  color: white;
-  padding: 20px;
-  border: 2px solid red;
-  box-shadow: 0 0 30px red;
+  background: #000;
+  color: #fff;
   font-family: monospace;
-  z-index: 999;
-  animation: glow 1.5s infinite alternate;
+  padding: 20px;
   width: 300px;
+  border: 2px solid red;
+  border-radius: 8px;
+  box-shadow: 0 0 25px red;
+  z-index: 1000;
+  animation: popupGlow 0.6s infinite alternate;
 }
 
-/* Tombol Tutup */
+.popup h1 {
+  font-size: 1.2rem;
+  margin: 0 0 10px 0;
+  color: #ffcc00;
+  text-align: center;
+  letter-spacing: 5px;
+}
+
+.popup p {
+  margin: 0 0 15px 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #ccc;
+}
+
+/* ========================
+   BUTTON STYLE
+   ======================== */
 .popup button {
-  background: red;
+  display: inline-block;
+  padding: 8px 16px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  background: #ff0000;
   color: white;
   border: none;
-  padding: 8px 15px;
-  margin-top: 10px;
+  border-radius: 5px;
   cursor: pointer;
-  font-weight: bold;
+  transition: 0.2s ease;
 }
 
-/* Efek Kedip */
-@keyframes glow {
+.popup button:hover {
+  background: #cc0000;
+  box-shadow: 0 0 10px red;
+}
+
+/* ========================
+   ANIMASI GLOWING DAN BLINK
+   ======================== */
+@keyframes popupGlow {
   from {
     box-shadow: 0 0 10px red;
   }
   to {
     box-shadow: 0 0 30px red;
+  }
+}
+
+@keyframes warningBlink {
+  0% {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%) scale(1.05);
+    opacity: 0.9;
   }
 }
