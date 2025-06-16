@@ -2,21 +2,45 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <title>⚠️ Sistem Terinfeksi ⚠️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>System Error</title>
   <link rel="stylesheet" href="prank.css" />
 </head>
 <body>
-  <div class="overlay">
-    <h1>⚠️ KOMPUTER ANDA TELAH TERINFEKSI ⚠️</h1>
-    <p>Data Anda sedang dikirim ke server anonim.<br>Hentikan semua aktivitas sekarang!</p>
+  <div class="warning">⚠️ KOMPUTER ANDA TELAH TERINFEKSI ⚠️</div>
+  <div class="details">
+    Data Anda sedang dikirim ke server anonim.<br/>
+    Hentikan semua aktivitas sekarang!
   </div>
 
-  <video id="bg-video" autoplay loop muted>
-    <source src="https://files.catbox.moe/x24fxy.mp4" type="video/mp4" />
-  </video>
+  <!-- Audio -->
+  <audio id="virus-audio" autoplay>
+    <source src="audio.mp3" type="audio/mpeg">
+  </audio>
 
-  <audio id="alert-audio" src="audio.mp3" autoplay loop></audio>
+  <!-- Video efek background -->
+  <div class="video-container">
+    <video autoplay muted loop>
+      <source src="https://files.catbox.moe/x24fxy.mp4" type="video/mp4">
+    </video>
+  </div>
 
-  <script src="prank.js"></script>
+  <script>
+    // Efek delay dan popup spam
+    setTimeout(() => {
+      let i = 0;
+      const interval = setInterval(() => {
+        alert("⚠️ Sistem Anda Telah Disusupi Malware!\nSegera matikan perangkat!");
+        i++;
+        if (i >= 10) clearInterval(interval);
+      }, 500);
+    }, 3000);
+
+    // Pastikan audio bisa dimainkan setelah interaksi
+    document.addEventListener("click", () => {
+      const audio = document.getElementById("virus-audio");
+      if (audio.paused) audio.play();
+    });
+  </script>
 </body>
 </html>
