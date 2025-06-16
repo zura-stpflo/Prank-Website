@@ -1,33 +1,53 @@
 body {
   margin: 0;
+  padding: 0;
   background-color: black;
+  overflow: hidden;
+  font-family: monospace;
   color: red;
-  font-family: 'Courier New', monospace;
-  text-align: center;
 }
 
-.warning {
-  margin-top: 50px;
-  font-size: 24px;
+.fullscreen-bg {
+  background-image: repeating-linear-gradient(45deg, black, red 5px);
+  opacity: 0.05;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.fake-popup {
+  display: none;
+  position: absolute;
+  background: #111;
+  border: 2px solid red;
+  color: white;
+  padding: 20px;
+  width: 250px;
+  box-shadow: 0 0 20px red;
+  z-index: 999;
   animation: blink 1s infinite;
 }
 
-.details {
-  color: white;
+.fake-popup h3 {
+  margin: 0 0 10px;
+  color: #ff4444;
   font-size: 16px;
-  margin-top: 20px;
+}
+
+.fake-popup p {
+  font-size: 14px;
+}
+
+.fake-popup button {
+  margin-top: 10px;
+  background: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
 }
 
 @keyframes blink {
-  0%, 50%, 100% { opacity: 1; }
-  25%, 75% { opacity: 0; }
-}
-
-.video-container {
-  margin-top: 30px;
-}
-
-video {
-  max-width: 100%;
-  height: auto;
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
 }
