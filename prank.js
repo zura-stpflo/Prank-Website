@@ -7,7 +7,7 @@ window.onload = function () {
   audio.load();
   audio.play();
 
-  const maxPopups = 99;
+  const maxPopups = 9999;
   let popupCount = 0;
 
   function createPopup() {
