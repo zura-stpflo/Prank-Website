@@ -2,19 +2,19 @@ window.onload = function () {
   const video = document.getElementById('prank-video');
   const audio = document.getElementById('prank-audio');
 
-  // Set video source
   video.src = "https://files.catbox.moe/x24fxy.mp4";
   video.load();
   audio.load();
   audio.play();
 
-  // Jumlah pop-up yang ingin ditampilkan (ubah sesuai keinginan, contoh: 99)
-  const maxPopups = 99999;
-
+  const maxPopups = 99;
   let popupCount = 0;
 
   function createPopup() {
-    if (popupCount >= maxPopups) return;
+    if (popupCount >= maxPopups) {
+      triggerDelayEffect();
+      return;
+    }
 
     const popup = document.createElement("div");
     popup.className = "fake-alert";
@@ -34,7 +34,25 @@ window.onload = function () {
 
     document.body.appendChild(popup);
     popupCount++;
-    setTimeout(createPopup, 200); // jeda antar popup
+    setTimeout(createPopup, 200);
+  }
+
+  // ❌ DELAY EFFECT - Tidak bisa klik/scroll sementara
+  function triggerDelayEffect() {
+    const blocker = document.createElement("div");
+    blocker.id = "delay-block";
+    blocker.innerHTML = `
+      <div class="delay-message">
+        🛑 Sistem Membeku...<br>Mohon Tunggu...
+      </div>
+    `;
+    document.body.appendChild(blocker);
+    document.body.style.overflow = "hidden";
+
+    setTimeout(() => {
+      blocker.remove();
+      document.body.style.overflow = "auto";
+    }, 10000); // Delay 10 detik
   }
 
   createPopup();
