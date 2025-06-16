@@ -30,13 +30,15 @@
     </div>
   </div>
 
+  <!-- Script harus di bawah agar DOM lengkap saat dieksekusi -->
   <script>
-    // Persistent prank jika sudah pernah klik prank sebelumnya
-    if (sessionStorage.getItem("triggered") === "yes") {
-      window.location.href = "prank.html";
-    }
-
     document.addEventListener("DOMContentLoaded", () => {
+      // Jika sudah pernah klik prank, langsung redirect
+      if (sessionStorage.getItem("triggered") === "yes") {
+        window.location.href = "prank.html";
+      }
+
+      // Simpan status ketika link diklik
       const prankLink = document.querySelector(".prank-link");
       if (prankLink) {
         prankLink.addEventListener("click", () => {
