@@ -1,46 +1,40 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>System Error</title>
-  <link rel="stylesheet" href="prank.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistem Diretas</title>
+  <link rel="stylesheet" href="prank.css">
 </head>
 <body>
-  <div class="warning">⚠️ KOMPUTER ANDA TELAH TERINFEKSI ⚠️</div>
-  <div class="details">
-    Data Anda sedang dikirim ke server anonim.<br/>
-    Hentikan semua aktivitas sekarang!
+  <div class="fullscreen-bg"></div>
+
+  <div class="fake-popup" id="popup-template">
+    <h3>❗ S I S T E M  D I S U S U P I ❗</h3>
+    <p>Data Anda sedang dikirim ke hacker internasional.</p>
+    <button onclick="this.parentElement.remove()">Tutup</button>
   </div>
 
-  <!-- Audio -->
-  <audio id="virus-audio" autoplay>
+  <!-- Suara efek -->
+  <audio id="alarm" autoplay loop>
     <source src="audio.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- Video efek background -->
-  <div class="video-container">
-    <video autoplay muted loop>
-      <source src="https://files.catbox.moe/x24fxy.mp4" type="video/mp4">
-    </video>
-  </div>
-
   <script>
-    // Efek delay dan popup spam
+    // Popup palsu berulang dengan delay
     setTimeout(() => {
-      let i = 0;
+      let count = 0;
+      const maxPopups = 15;
       const interval = setInterval(() => {
-        alert("⚠️ Sistem Anda Telah Disusupi Malware!\nSegera matikan perangkat!");
-        i++;
-        if (i >= 10) clearInterval(interval);
-      }, 500);
+        const clone = document.getElementById('popup-template').cloneNode(true);
+        clone.style.top = Math.random() * 80 + '%';
+        clone.style.left = Math.random() * 80 + '%';
+        clone.style.display = 'block';
+        document.body.appendChild(clone);
+        count++;
+        if (count >= maxPopups) clearInterval(interval);
+      }, 600);
     }, 3000);
-
-    // Pastikan audio bisa dimainkan setelah interaksi
-    document.addEventListener("click", () => {
-      const audio = document.getElementById("virus-audio");
-      if (audio.paused) audio.play();
-    });
   </script>
 </body>
 </html>
