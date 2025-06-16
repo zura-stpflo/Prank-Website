@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
         alert(`⚠️ SISTEM ANDA TELAH DISUSUPI MALWARE!\n(${count + 1}/${total})\nSegera matikan perangkat Anda!`);
         count++;
         showNextAlert();
-      }, 3000); // delay 3 detik
+      }, 300); // delay 3 detik
     }
   }
 
