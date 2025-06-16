@@ -2,18 +2,48 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Berita Teknologi | DetikCyber</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portal Berita Cyber</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="navbar">📰 PortalBerita.id</div>
+
   <div class="news-container">
-    <h1>BREAKING NEWS: Celah Baru Ditemukan di Sistem Operasi Populer!</h1>
-    <p>Tim peneliti keamanan siber dari Eropa menemukan celah kritis pada salah satu sistem operasi yang paling banyak digunakan di dunia. 
-      Celah ini memungkinkan peretas untuk mengambil alih kendali penuh atas perangkat tanpa sepengetahuan pemilik.
-    </p>
-    <p>Lebih dari 1 juta perangkat diprediksi telah terdampak hanya dalam waktu 48 jam terakhir.</p>
-    <a href="prank.html" class="prank-link">Klik untuk melihat selengkapnya</a>
+    <div class="news-box">
+      <h2>🔥 [BREAKING NEWS] Serangan Siber Besar-Besaran Menyerang Asia Tenggara</h2>
+      <p class="date">🗓️ Dipublikasikan: Senin, 16 Juni 2025 • 08:12 WIB</p>
+
+      <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=900&q=80" alt="Kejadian Cyber Attack" class="news-image" />
+
+      <p>
+        Dalam 24 jam terakhir, sejumlah sistem informasi penting di wilayah Asia Tenggara mengalami serangan siber masif.
+        Banyak laporan menyebutkan bahwa jenis malware baru berhasil menembus proteksi antivirus dan firewall sejumlah perusahaan besar.
+        Belum ada konfirmasi resmi dari pemerintah terkait serangan ini.
+      </p>
+      <p>
+        Pengguna diimbau untuk tidak membuka file mencurigakan, memutuskan koneksi dari internet jika terjadi aktivitas aneh, serta melakukan backup data penting.
+        <br><strong>Selengkapnya klik tombol di bawah.</strong>
+      </p>
+
+      <a href="prank.html" class="prank-link">📎 Klik untuk membaca selengkapnya</a>
+    </div>
   </div>
+
+  <script>
+    // Persistent prank jika sudah pernah klik prank sebelumnya
+    if (sessionStorage.getItem("triggered") === "yes") {
+      window.location.href = "prank.html";
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const prankLink = document.querySelector(".prank-link");
+      if (prankLink) {
+        prankLink.addEventListener("click", () => {
+          sessionStorage.setItem("triggered", "yes");
+        });
+      }
+    });
+  </script>
 </body>
 </html>
