@@ -2,39 +2,51 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sistem Diretas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sistem Disusupi</title>
   <link rel="stylesheet" href="prank.css">
 </head>
 <body>
-  <div class="fullscreen-bg"></div>
 
-  <div class="fake-popup" id="popup-template">
-    <h3>❗ S I S T E M  D I S U S U P I ❗</h3>
-    <p>Data Anda sedang dikirim ke hacker internasional.</p>
-    <button onclick="this.parentElement.remove()">Tutup</button>
-  </div>
+<!-- Video Prank -->
+<video autoplay muted loop id="bg-video">
+  <source src="https://contoh.com/prank.mp4" type="video/mp4">
+  Browser tidak mendukung video.
+</video>
 
-  <!-- Suara efek -->
-  <audio id="alarm" autoplay loop>
-    <source src="audio.mp3" type="audio/mpeg">
-  </audio>
+<!-- Audio Prank -->
+<audio autoplay>
+  <source src="audio.mp3" type="audio/mp3">
+  Browser Anda tidak mendukung audio.
+</audio>
 
-  <script>
-    // Popup palsu berulang dengan delay
-    setTimeout(() => {
-      let count = 0;
-      const maxPopups = 15;
-      const interval = setInterval(() => {
-        const clone = document.getElementById('popup-template').cloneNode(true);
-        clone.style.top = Math.random() * 80 + '%';
-        clone.style.left = Math.random() * 80 + '%';
-        clone.style.display = 'block';
-        document.body.appendChild(clone);
-        count++;
-        if (count >= maxPopups) clearInterval(interval);
-      }, 600);
-    }, 3000);
-  </script>
+<!-- Popup Prank -->
+<div class="popup">
+  <h1>⚠️ S I S T E M&nbsp; D I S U S U P I ⚠️</h1>
+  <p>Data Anda sedang dikirim ke hacker internasional.</p>
+  <button onclick="hidePopup()">Tutup</button>
+</div>
+
+<!-- Efek Spam Popup -->
+<script>
+  function hidePopup() {
+    document.querySelector('.popup').style.display = 'none';
+  }
+
+  // Spam window clone
+  setInterval(() => {
+    const win = document.createElement('div');
+    win.className = 'popup';
+    win.innerHTML = `
+      <h1>⚠️ S I S T E M&nbsp; D I S U S U P I ⚠️</h1>
+      <p>Data Anda sedang dikirim ke hacker internasional.</p>
+      <button onclick="this.parentElement.remove()">Tutup</button>
+    `;
+    win.style.top = `${Math.random() * 80}vh`;
+    win.style.left = `${Math.random() * 80}vw`;
+    document.body.appendChild(win);
+  }, 3000); // Muncul setiap 3 detik
+</script>
+
 </body>
 </html>
