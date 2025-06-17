@@ -8,31 +8,30 @@
 </head>
 <body>
 
-<!-- VIDEO BACKGROUND LOKAL -->
-<video id="bg-video" autoplay muted loop playsinline>
+<!-- VIDEO BACKGROUND -->
+<video autoplay muted loop id="bg-video" playsinline>
   <source src="video.mp4" type="video/mp4" />
   Browser Anda tidak mendukung video.
 </video>
 
-<!-- AUDIO BACKGROUND LOKAL -->
+<!-- AUDIO -->
 <audio autoplay loop>
   <source src="audio.mp3" type="audio/mp3" />
 </audio>
 
-<!-- PERINGATAN UTAMA -->
+<!-- PERINGATAN -->
 <div class="peringatan">
   ⚠️ Your System Has Been Infected With A Virus! <br />
   YOU ARE AN IDIOT!
 </div>
 
-<!-- POPUP PERTAMA -->
+<!-- POPUP -->
 <div class="popup">
   <h1>⚠️ S Y S T E M&nbsp; -&nbsp; E R R O R ⚠️</h1>
   <p>We Have Collected & Distributed Your Personal Data.</p>
   <button onclick="this.parentElement.remove()">Tutup</button>
 </div>
 
-<!-- SCRIPT UNTUK POPUP BERULANG -->
 <script>
 setInterval(() => {
   const popup = document.createElement('div');
@@ -46,6 +45,15 @@ setInterval(() => {
   popup.style.left = `${Math.random() * 80}vw`;
   document.body.appendChild(popup);
 }, 1000);
+
+// Debugging video
+const video = document.getElementById("bg-video");
+video.onloadeddata = () => {
+  console.log("✅ Video berhasil dimuat.");
+};
+video.onerror = () => {
+  console.error("❌ Gagal memuat video.");
+};
 </script>
 
 </body>
