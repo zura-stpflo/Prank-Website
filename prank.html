@@ -8,13 +8,13 @@
 </head>
 <body>
 
-<!-- VIDEO BACKGROUND DARI LINK -->
-<video autoplay muted loop id="bg-video" playsinline>
-  <source src="https://files.catbox.moe/vkj9t3.mp4" type="video/mp4" />
+<!-- VIDEO BACKGROUND LOKAL -->
+<video id="bg-video" autoplay muted loop playsinline>
+  <source src="video.mp4" type="video/mp4" />
   Browser Anda tidak mendukung video.
 </video>
 
-<!-- AUDIO BACKGROUND (opsional) -->
+<!-- AUDIO BACKGROUND LOKAL -->
 <audio autoplay loop>
   <source src="audio.mp3" type="audio/mp3" />
 </audio>
@@ -32,7 +32,7 @@
   <button onclick="this.parentElement.remove()">Tutup</button>
 </div>
 
-<!-- SCRIPT POPUP -->
+<!-- SCRIPT UNTUK POPUP BERULANG -->
 <script>
 setInterval(() => {
   const popup = document.createElement('div');
